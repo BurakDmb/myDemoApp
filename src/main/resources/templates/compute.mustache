@@ -1,4 +1,5 @@
-<title>My application deployed automatically</title>
+{{> header}}
+
   <h1>Hello, World!</h1>
     Result is {{result}}
 
@@ -6,7 +7,9 @@
   <form action="compute" method="post">
         <textarea name="input1" rows="10" cols="30"></textarea>
         <textarea name="input2" rows="10" cols="30"></textarea>
+        <textarea name="input3" rows="1" cols="5"></textarea>
+        <textarea name="input4" rows="1" cols="5"></textarea>
         <br>
         <input type="submit">
   </form>
-
+{{> footer}}
