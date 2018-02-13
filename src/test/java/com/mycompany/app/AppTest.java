@@ -39,11 +39,11 @@ public class AppTest
         }
         assertTrue(true);
     }
-    public void testNull() {
+    public void testEmpty() {
         ArrayList<Integer> array1 = new ArrayList<>();
         ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 11, 21, 15, 5));
         ArrayList<Integer> result= new App().calculateCommonElements(array1,array2, 2, 4);
-        assertEquals(result,null);
+        assertTrue(result.size()==0);
     }
     private boolean isEqual(int a, int b){
         if(a==b) return true;
