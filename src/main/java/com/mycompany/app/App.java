@@ -50,7 +50,7 @@ public class App
         while (sc1.hasNext())
         {
             String tmp=sc1.next();
-            if(tmp!=null && tmp.length()==0){
+            if(tmp!=null && tmp.length()!=0){
                 int value = Integer.parseInt(tmp.replaceAll("\\s",""));
                 inputList1.add(value);
             }
@@ -65,7 +65,7 @@ public class App
         while (sc2.hasNext())
         {
             String tmp=sc2.next();
-            if(tmp!=null && tmp.length()==0){
+            if(tmp!=null && tmp.length()!=0){
                 int value = Integer.parseInt(tmp.replaceAll("\\s",""));
                 inputList2.add(value);
             }
