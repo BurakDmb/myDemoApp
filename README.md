@@ -6,3 +6,13 @@ In addition to the assignment, I have used Bootstrap to make the form in page lo
 
 Demo Site: https://peaceful-tor-48916.herokuapp.com/compute
 
+Screenshots:
+
+* Demo
+[![Demo](http://i.hizliresim.com/6JXvpP.png)](http://hizliresim.com/6JXvpP)
+
+* TravisCI
+[![TravisCI](http://i.hizliresim.com/y03pJL.png)](http://hizliresim.com/y03pJL)
+
+* Heroku
+[![Heroku](http://i.hizliresim.com/W7Qp8Y.png)](http://hizliresim.com/W7Qp8Y)
