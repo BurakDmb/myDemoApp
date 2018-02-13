@@ -14,41 +14,60 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 public class App
 {
-    public static boolean search(ArrayList<Integer> array, int e) {
-      System.out.println("inside search");
-      if (array == null) return false;
-
-      for (int elt : array) {
-        if (elt == e) return true;
-      }
-      return false;
+    public static ArrayList<Integer> calculateCommonElements(ArrayList<Integer> array1, ArrayList<Integer> array2, int minVal, int maxVal){
+        ArrayList<Integer> tmpList=new ArrayList<>();
+        if(array1==null) return null;
+        if(array2==null) return null;
+        for(int tmpVal1:array1){
+            for(int tmpVal2:array2){
+                if(tmpVal1==tmpVal2 && tmpVal1>=minVal && tmpVal1<=maxVal){
+                    tmpList.add(tmpVal1);
+                    break;
+                }
+            }
+        }
+        return tmpList;
     }
-
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
 
         get("/", (req, res) -> "Hello, World");
 
         post("/compute", (req, res) -> {
-          //System.out.println(req.queryParams("input1"));
-          //System.out.println(req.queryParams("input2"));
+        //System.out.println(req.queryParams("input1"));
+        //System.out.println(req.queryParams("input2"));
 
-          String input1 = req.queryParams("input1");
-          java.util.Scanner sc1 = new java.util.Scanner(input1);
-          sc1.useDelimiter("[;\r\n]+");
-          java.util.ArrayList<Integer> inputList = new java.util.ArrayList<>();
-          while (sc1.hasNext())
-          {
-            int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
-            inputList.add(value);
-          }
-          System.out.println(inputList);
+        String input1 = req.queryParams("input1");
+        java.util.Scanner sc1 = new java.util.Scanner(input1);
+        sc1.useDelimiter("[;\r\n]+");
+        java.util.ArrayList<Integer> inputList1 = new java.util.ArrayList<>();
+        while (sc1.hasNext())
+        {
+        int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
+        inputList1.add(value);
+        }
+        System.out.println(inputList1);
 
 
-          String input2 = req.queryParams("input2").replaceAll("\\s","");
-          int input2AsInt = Integer.parseInt(input2);
+        String input2 = req.queryParams("input1");
+        java.util.Scanner sc2 = new java.util.Scanner(input2);
+        sc1.useDelimiter("[;\r\n]+");
+        java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
+        while (sc2.hasNext())
+        {
+            int value = Integer.parseInt(sc2.next().replaceAll("\\s",""));
+            inputList2.add(value);
+        }
+        System.out.println(inputList2);
 
-          boolean result = App.search(inputList, input2AsInt);
+
+        String input3 = req.queryParams("input3").replaceAll("\\s","");
+        int input3AsInt = Integer.parseInt(input3);
+
+        String input4 = req.queryParams("input4").replaceAll("\\s","");
+        int input4AsInt = Integer.parseInt(input4);
+
+        ArrayList<Integer> result = App.calculateCommonElements(inputList1, inputList2, input3AsInt, input4AsInt);
 
          Map map = new HashMap();
           map.put("result", result);
@@ -64,6 +83,7 @@ public class App
             },
             new MustacheTemplateEngine());
     }
+
 
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
