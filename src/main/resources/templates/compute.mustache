@@ -1,15 +1,35 @@
 {{> header}}
 
-  <h1>Hello, World!</h1>
+  <h1>Bil481-HW1-Finding Common elements in Array Lists</h1>
+  <br>
+  <h2>This tools expects you to enter two arrays, min and max value, then outputs a arraylists of integers whichs every element on this array exists in arraylist1 and arraylist2 and the value is between min and max value</h2>
     Result is {{result}}
 
 
+
   <form action="compute" method="post">
-        <textarea name="input1" rows="10" cols="30"></textarea>
-        <textarea name="input2" rows="10" cols="30"></textarea>
-        <textarea name="input3" rows="1" cols="5"></textarea>
-        <textarea name="input4" rows="1" cols="5"></textarea>
-        <br>
-        <input type="submit">
+    <div class="col-lg-6">
+        <div class="form-group">
+              <label for="input1">Enter the elements of the ArrayList 1, please enter 1 integer on every line</label>
+              <textarea class="form-control" id="input1" name="input1" rows="10"></textarea>
+            </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+              <label for="input2">Enter the elements of the ArrayList 2, please enter 1 integer on every line </label>
+              <textarea class="form-control" id="input2" name="input2" rows="10" ></textarea>
+            </div>
+    </div>
+
+    <div class="form-group">
+      <label for="input3">The min value for the search</label>
+      <textarea class="form-control" id="input3" name="input3" rows="1" cols="5"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="input4">The max value for the search</label>
+      <textarea class="form-control" id="input4" name="input4" rows="1" cols="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+
 {{> footer}}
