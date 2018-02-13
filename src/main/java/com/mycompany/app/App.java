@@ -21,12 +21,19 @@ public class App
         for(int tmpVal1:array1){
             for(int tmpVal2:array2){
                 if(tmpVal1==tmpVal2 && tmpVal1>=minVal && tmpVal1<=maxVal){
-                    tmpList.add(tmpVal1);
-                    break;
+                    addElement(tmpList,tmpVal1);
                 }
             }
         }
         return tmpList;
+    }
+    //Adds element if not exists in the arraylist, this prevents duplicate values
+    private static void addElement(ArrayList<Integer> list, int val){
+        boolean found=false;
+        for(int i=0;i<list.size();i++){
+            if(list.get(i)==val) found=true;
+        }
+        if(!found) list.add(val);
     }
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
@@ -85,7 +92,7 @@ public class App
     }
 
 
-    static int getHerokuAssignedPort() {
+    private static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
             return Integer.parseInt(processBuilder.environment().get("PORT"));

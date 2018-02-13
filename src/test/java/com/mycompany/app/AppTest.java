@@ -17,14 +17,33 @@ public class AppTest
 {
     public void testFound() {
         ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 9, 10));
-        ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4,11,21,15,5));
+        ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList( 2, 11, 21, 15, 5, 3, 4));
         ArrayList<Integer> result= new App().calculateCommonElements(array1,array2, 2, 4);
-        ArrayList<Integer> myresult= new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        ArrayList<Integer> myresult= new ArrayList<>(Arrays.asList(2, 3, 4));
         for(int i=0;i<result.size();i++){
             if(result.get(i)==myresult.get(i)){
-                assertTrue(isEqual(result.get(i),myresult.get(i)));
+                if(!isEqual(result.get(i),myresult.get(i))) assertTrue(false);
             }
         }
+        assertTrue(true);
+    }
+    public void testDuplicate(){
+        ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 3, 5,1));
+        ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList( 2, 3, 5, 6));
+        ArrayList<Integer> result= new App().calculateCommonElements(array1,array2, 2, 4);
+        ArrayList<Integer> myresult= new ArrayList<>(Arrays.asList(2, 3));
+        for(int i=0;i<result.size();i++){
+            if(result.get(i)==myresult.get(i)){
+                if(!isEqual(result.get(i),myresult.get(i))) assertTrue(false);
+            }
+        }
+        assertTrue(true);
+    }
+    public void testNull() {
+        ArrayList<Integer> array1 = new ArrayList<>();
+        ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 11, 21, 15, 5));
+        ArrayList<Integer> result= new App().calculateCommonElements(array1,array2, 2, 4);
+        assertEquals(result,null);
     }
     private boolean isEqual(int a, int b){
         if(a==b) return true;
