@@ -16,8 +16,7 @@ public class App
 {
     public static ArrayList<Integer> calculateCommonElements(ArrayList<Integer> array1, ArrayList<Integer> array2, int minVal, int maxVal){
         ArrayList<Integer> tmpList=new ArrayList<>();
-        if(array1==null) return null;
-        if(array2==null) return null;
+        if(array1==null || array2==null) return tmpList;    //returns empty arraylist if any of them is null
         for(int tmpVal1:array1){
             for(int tmpVal2:array2){
                 if(tmpVal1==tmpVal2 && tmpVal1>=minVal && tmpVal1<=maxVal){
@@ -50,8 +49,11 @@ public class App
         java.util.ArrayList<Integer> inputList1 = new java.util.ArrayList<>();
         while (sc1.hasNext())
         {
-        int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
-        inputList1.add(value);
+            String tmp=sc1.next();
+            if(tmp!=null && tmp.length()==0){
+                int value = Integer.parseInt(tmp.replaceAll("\\s",""));
+                inputList1.add(value);
+            }
         }
         System.out.println(inputList1);
 
@@ -62,8 +64,12 @@ public class App
         java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
         while (sc2.hasNext())
         {
-            int value = Integer.parseInt(sc2.next().replaceAll("\\s",""));
-            inputList2.add(value);
+            String tmp=sc2.next();
+            if(tmp!=null && tmp.length()==0){
+                int value = Integer.parseInt(tmp.replaceAll("\\s",""));
+                inputList2.add(value);
+            }
+
         }
         System.out.println(inputList2);
 

@@ -4,7 +4,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -22,7 +21,10 @@ public class AppTest
         ArrayList<Integer> myresult= new ArrayList<>(Arrays.asList(2, 3, 4));
         for(int i=0;i<result.size();i++){
             if(result.get(i)==myresult.get(i)){
-                if(!isEqual(result.get(i),myresult.get(i))) assertTrue(false);
+                if(!isEqual(result.get(i),myresult.get(i))){
+                    assertTrue(false);
+                    return;
+                }
             }
         }
         assertTrue(true);
@@ -30,7 +32,7 @@ public class AppTest
     public void testDuplicate(){
         ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 3, 5,1));
         ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList( 2, 3, 5, 6));
-        ArrayList<Integer> result= new App().calculateCommonElements(array1,array2, 2, 4);
+        ArrayList<Integer> result= new App().calculateCommonElements(array1, array2, 2, 4);
         ArrayList<Integer> myresult= new ArrayList<>(Arrays.asList(2, 3));
         for(int i=0;i<result.size();i++){
             if(result.get(i)==myresult.get(i)){
@@ -39,31 +41,35 @@ public class AppTest
         }
         assertTrue(true);
     }
-    public void testEmpty() {
+    public void testFirstOneIsEmpty() {
         ArrayList<Integer> array1 = new ArrayList<>();
         ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 11, 21, 15, 5));
-        ArrayList<Integer> result= new App().calculateCommonElements(array1,array2, 2, 4);
+        ArrayList<Integer> result= new App().calculateCommonElements(array1, array2, 2, 4);
+        assertTrue(result.size()==0);
+    }
+
+    public void testSecondOneIsEmpty() {
+        ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 11, 21, 15, 5));
+        ArrayList<Integer> array2 = new ArrayList<>();
+        ArrayList<Integer> result= new App().calculateCommonElements(array1, array2, 2, 4);
+        assertTrue(result.size()==0);
+    }
+    public void testNull(){
+        ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 11, 21, 15, 5));
+        ArrayList<Integer> result= new App().calculateCommonElements(array1,null, 2, 4);
+        assertTrue(result.size()==0);
+    }
+    public void testWrongRange() {
+        ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 9, 10));
+        ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList( 2, 11, 21, 15, 5, 3, 4));
+        ArrayList<Integer> result= new App().calculateCommonElements(array1, array2, 5, 1);
         assertTrue(result.size()==0);
     }
     private boolean isEqual(int a, int b){
         if(a==b) return true;
         else return false;
     }
-    /*
-    public void testNotFound() {
-        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-        assertFalse(new App().search(array, 5));
-    }
 
-    public void testEmptyArray() {
-        ArrayList<Integer> array = new ArrayList<>();
-        assertFalse(new App().search(array, 1));
-    }
-
-    public void testNull() {
-      assertFalse(new App().search(null, 1));
-    }
-    */
     /**
      * Create the test case
      *
